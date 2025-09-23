@@ -57,9 +57,9 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Login</button>
-                                    <p class="mt-3">
+                                    <!-- <p class="mt-3">
                                         Belum punya akun ? <a href="<?= base_url('auth/register') ?>" class="text-primary">Daftar Disini</a>
-                                    </p>
+                                    </p> -->
                                 </form>
                             </div>
                             <div class="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">

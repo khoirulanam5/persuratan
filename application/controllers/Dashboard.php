@@ -5,15 +5,13 @@ class Dashboard extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('session');
-        $this->load->library('form_validation');
     }
 
     public function index() {
         $data['title'] = 'Dashboard';
         $data['surat_masuk'] = count($this->db->get('tb_surat_masuk')->result());
         $data['surat_keluar'] = count($this->db->get('tb_surat_keluar')->result());
-        $data['arsip'] = count($this->db->get('tb_arsip')->result());
+        $data['jenis'] = count($this->db->get('tb_jenis_surat')->result());
         $data['user'] = count($this->db->get('tb_user')->result());
 
         $this->load->view('template/header', $data);

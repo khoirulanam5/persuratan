@@ -21,14 +21,20 @@
                     </li>
 
                     <?php if ($this->session->userdata('level') == 'ADMIN'): ?>
-                        <li class="<?= $this->uri->segment(2) == 'suratmasuk' ? 'active' : '' ?>">
-                            <a href="<?= base_url('admin/suratmasuk') ?>"><i class="las la-envelope-open-text"></i><span>Surat Masuk</span></a>
+                        <li class="<?= $this->uri->segment(2) == 'jenis_surat' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/jenis_surat') ?>"><i class="las la-archive"></i><span>Jenis Surat</span></a>
                         </li>
-                        <li class="<?= $this->uri->segment(2) == 'prosessurat' ? 'active' : '' ?>">
-                            <a href="<?= base_url('admin/prosessurat') ?>"><i class="las la-tasks"></i><span>Proses Surat</span></a>
+                        <li class="<?= $this->uri->segment(2) == 'surat_masuk' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/surat_masuk') ?>"><i class="las la-envelope-open-text"></i><span>Surat Masuk</span></a>
                         </li>
-                        <li class="<?= $this->uri->segment(2) == 'arsip' ? 'active' : '' ?>">
-                            <a href="<?= base_url('admin/arsip') ?>"><i class="las la-archive"></i><span>Arsip Surat</span></a>
+                        <li class="<?= $this->uri->segment(2) == 'surat_keluar' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/surat_keluar') ?>"><i class="las la-envelope-open"></i><span>Surat Keluar</span></a>
+                        </li>
+                        <li class="<?= $this->uri->segment(2) == 'rekap_surat' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/rekap_surat') ?>"><i class="las la-archive"></i><span>Rekap Surat</span></a>
+                        </li>
+                        <li class="<?= $this->uri->segment(2) == 'pegawai' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/pegawai') ?>"><i class="las la-users"></i><span>Data Pegawai</span></a>
                         </li>
                         <li class="<?= $this->uri->segment(2) == 'user' ? 'active' : '' ?>">
                             <a href="<?= base_url('admin/user') ?>"><i class="las la-user"></i><span>Data User</span></a>
@@ -36,23 +42,14 @@
                     <?php endif; ?>
 
                     <?php if ($this->session->userdata('level') == 'PEGAWAI'): ?>
-                        <li class="<?= $this->uri->segment(2) == 'suratmasuk' ? 'active' : '' ?>">
-                            <a href="<?= base_url('pegawai/suratmasuk') ?>"><i class="las la-envelope-open-text"></i><span>Surat Masuk</span></a>
+                        <li class="<?= $this->uri->segment(2) == 'surat_masuk' ? 'active' : '' ?>">
+                            <a href="<?= base_url('pegawai/surat_masuk') ?>"><i class="las la-envelope-open-text"></i><span>Surat Masuk</span></a>
                         </li>
-                        <li class="<?= $this->uri->segment(2) == 'suratkeluar' ? 'active' : '' ?>">
-                            <a href="<?= base_url('pegawai/suratkeluar') ?>"><i class="fas fa-envelope-open"></i><span>Proses Surat Keluar</span></a>
+                        <li class="<?= $this->uri->segment(2) == 'surat_keluar' ? 'active' : '' ?>">
+                            <a href="<?= base_url('pegawai/surat_keluar') ?>"><i class="fas fa-envelope-open"></i><span> Proses Surat Keluar</span></a>
                         </li>
-                        <li class="<?= $this->uri->segment(2) == 'arsip' ? 'active' : '' ?>">
-                            <a href="<?= base_url('pegawai/arsip') ?>"><i class="las la-archive"></i><span>Arsip Surat</span></a>
-                        </li>
-                    <?php endif; ?>
-
-                    <?php if ($this->session->userdata('level') == 'TAMU'): ?>
-                        <li class="<?= $this->uri->segment(2) == 'kirimsurat' ? 'active' : '' ?>">
-                            <a href="<?= base_url('tamu/kirimsurat') ?>"><i class="las la-paper-plane"></i><span>Kirim Surat</span></a>
-                        </li>
-                        <li class="<?= $this->uri->segment(2) == 'suratterima' ? 'active' : '' ?>">
-                            <a href="<?= base_url('tamu/suratterima') ?>"><i class="las la-envelope-open-text"></i><span>Surat Masuk</span></a>
+                        <li class="<?= $this->uri->segment(2) == 'user' ? 'active' : '' ?>">
+                            <a href="<?= base_url('pegawai/user') ?>"><i class="las la-user"></i><span>Data User</span></a>
                         </li>
                     <?php endif; ?>
                 </ul>

@@ -14,7 +14,6 @@
             <!-- Halaman content -->
             <?= $this->session->flashdata('pesan') ?>
             <!-- Dashboard Widgets -->
-            <?php if($this->session->userdata('level') !== 'TAMU'): ?>
             <div class="row">
                <div class="col-xl-3 col-sm-6 col-12">
                   <div class="card">
@@ -60,9 +59,9 @@
                               <i class="fas fa-archive"></i>
                            </span>
                            <div class="dash-count">
-                              <div class="dash-title">Arsip Surat</div>
+                              <div class="dash-title">Jenis Surat</div>
                               <div class="dash-counts">
-                                 <p><?= $arsip ?></p>
+                                 <p><?= $jenis ?></p>
                               </div>
                            </div>
                         </div>
@@ -88,7 +87,6 @@
                   </div>
                </div>
             </div>
-            <?php endif; ?>
             <!-- /Dashboard Widgets -->
 
             <!-- Welcome Message -->

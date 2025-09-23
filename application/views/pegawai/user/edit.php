@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="<?= base_url('admin/user/edit/' . $user->id_user) ?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?= base_url('pegawai/user/edit/' . $user->id_user) ?>" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="id_user" value="<?= $user->id_user ?>">
                                     
                                     <div class="form-group">
@@ -93,7 +93,7 @@
                                     </div>
                                     
                                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
-                                    <a href="<?= base_url('admin/user') ?>" class="btn btn-sm btn-secondary">Batal</a>
+                                    <a href="<?= base_url('pegawai/user') ?>" class="btn btn-sm btn-secondary">Batal</a>
                                 </form>
                             </div>
                         </div>

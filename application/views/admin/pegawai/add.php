@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="<?= base_url('admin/user/add') ?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?= base_url('admin/pegawai/add') ?>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Username:</label>
                                         <input type="text" name="username" class="form-control" placeholder="Masukan username" required>
@@ -42,14 +42,6 @@
                                             <option value="">Pilih Jenis Kelamin</option>
                                             <option value="Pria">Pria</option>
                                             <option value="Wanita">Wanita</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Jabatan:</label>
-                                        <select name="level" class="form-control" required>
-                                            <option value="">Pilih Jabatan</option>
-                                            <option value="ADMIN">Admin</option>
-                                            <option value="PEGAWAI">Pegawai</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -78,7 +70,7 @@
                                         <input type="file" name="foto" class="form-control" accept="image/*">
                                     </div>
                                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
-                                    <a href="<?= base_url('admin/user') ?>" class="btn btn-sm btn-secondary">Kembali</a>
+                                    <a href="<?= base_url('admin/pegawai') ?>" class="btn btn-sm btn-secondary">Kembali</a>
                                 </form>
                             </div>
                         </div>
