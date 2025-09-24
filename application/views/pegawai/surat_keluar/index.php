@@ -25,9 +25,6 @@
                             <div class="card-body">
                                 <div class="row justify-content-between mb-4">
                                     <div class="col-md-6"></div>
-                                    <div class="col-md-6 text-right">
-                                        <a href="<?= base_url('admin/surat_keluar/add') ?>" class="btn btn-sm btn-primary">Buat Surat</a>
-                                    </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table data-table table-striped table-bordered">

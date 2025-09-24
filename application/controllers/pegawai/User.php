@@ -5,13 +5,13 @@ class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('session');
-        $this->load->library('form_validation');
+        $this->load->model(['UserModel']);
+        ispegawai();
     }
 
     public function index() {
         $data['title'] = 'Data User';
-        $data['user'] = $this->db->get_where('tb_user')->result();
+        $data['user'] = $this->UserModel->getAll()->result();
 
         $this->load->view('template/header', $data);
         $this->load->view('template/topbar', $data);
@@ -19,25 +19,6 @@ class User extends CI_Controller {
         $this->load->view('pegawai/user/index', $data);
         $this->load->view('template/footer');
     }
-
-    public function generateId(){
-        $unik = 'NIP';
-        $kode = $this->db->query("SELECT MAX(id_user) LAST_NO FROM tb_user WHERE id_user LIKE '".$unik."%'")->row()->LAST_NO;
-        // mengambil angka dari kode barang terbesar, menggunakan fungsi substr
-        // dan diubah ke integer dengan (int)
-        $urutan = (int) substr($kode, 3, 6);
-        
-        // bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
-        $urutan++;
-        
-        // membentuk kode barang baru
-        // perintah sprintf("%03s", $urutan); berguna untuk membuat string menjadi 3 karakter
-        // misalnya perintah sprintf("%03s", 15); maka akan menghasilkan '015'
-        // angka yang diambil tadi digabungkan dengan kode huruf yang kita inginkan, misalnya BRG 
-        $huruf = $unik;
-        $kode = $huruf . sprintf("%06s", $urutan);
-        return $kode;
-      }
 
     public function add() {
         $data['title'] = 'Tambah Data User';
@@ -58,8 +39,6 @@ class User extends CI_Controller {
             $this->load->view('pegawai/user/add', $data);
             $this->load->view('template/footer');
         } else {
-            $id = $this->GenerateId();
-            //konfigurasi upload foto
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = '2048';
             $config['upload_path'] = './assets/img/user/';
@@ -68,7 +47,7 @@ class User extends CI_Controller {
             $foto = $this->upload->data('file_name');
 
             $data = [
-                'id_user' => $id,
+                'id_user' => $this->UserModel->generateId(),
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
                 'level' => $this->input->post('level'),
@@ -79,7 +58,7 @@ class User extends CI_Controller {
                 'alamat' => $this->input->post('alamat'),
                 'foto' => $foto
             ];
-            $this->db->insert('tb_user', $data);
+            $this->UserModel->save($data);
             
             $this->session->set_flashdata("pesan","<script> Swal.fire({title:'Berhasil', text:'Tambah data user berhasil', icon:'success'})</script>");
 			redirect('pegawai/user');
@@ -88,7 +67,7 @@ class User extends CI_Controller {
 
     public function edit($id_user) {
         $data['title'] = 'Edit Data User';
-        $data['user'] = $this->db->get_where('tb_user', ['id_user' => $id_user])->row();
+        $data['user'] = $this->UserModel->getById($id_user)->row();
 
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -106,9 +85,8 @@ class User extends CI_Controller {
             $this->load->view('pegawai/user/edit', $data);
             $this->load->view('template/footer');
         } else {
-            $id = $this->input->post('id_user');
             $data = [
-                'id_user' => $id,
+                'id_user' => $id_user,
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
                 'level' => $this->input->post('level'),
@@ -133,18 +111,15 @@ class User extends CI_Controller {
                     return;
                 }
             }
-    
-            $this->db->where('id_user', $id);
-            $this->db->update('tb_user', $data);
-    
+            $this->UserModel->edit($id_user, $data);
+
             $this->session->set_flashdata("pesan", "<script>Swal.fire({title:'Berhasil', text:'Data berhasil diupdate', icon:'success'})</script>");
             redirect('pegawai/user');
         }
     }
 
     public function delete($id_user) {
-        $this->db->where('id_user', $id_user);
-        $this->db->delete('tb_user');
+        $this->UserModel->delete($id_user);
         $this->session->set_flashdata("pesan","<script> Swal.fire({title:'Berhasil', text:'Hapus data user berhasil', icon:'success'})</script>");
 		redirect('pegawai/user');
     }

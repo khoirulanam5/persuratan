@@ -46,4 +46,16 @@ class SuratKeluarModel extends CI_Model {
         $this->db->join('tb_surat_masuk', 'tb_jenis_surat.id_jenis_surat = tb_surat_masuk.id_jenis_surat');
         return $this->db->get();
     }
+
+    public function setuju($id_surat_keluar) {
+        $this->db->set('status', 'Disetujui');
+        $this->db->where('id_surat_keluar', $id_surat_keluar);
+        return $this->db->update($this->_table);
+    }
+
+    public function tolak($id_surat_keluar) {
+        $this->db->set('status', 'Ditolak');
+        $this->db->where('id_surat_keluar', $id_surat_keluar);
+        return $this->db->update($this->_table);
+    }
 }

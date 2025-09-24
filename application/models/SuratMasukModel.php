@@ -39,4 +39,13 @@ class SuratMasukModel extends CI_Model {
     public function getById($id_surat_masuk) {
         return $this->db->get_where($this->_table, ["id_surat_masuk" => $id_surat_masuk]);
     }
+
+    public function getByDevisi() {
+        $this->db->select('a.jenis, tb_surat_masuk.*, b.devisi');
+        $this->db->from('tb_jenis_surat a');
+        $this->db->join('tb_surat_masuk', 'a.id_jenis_surat = tb_surat_masuk.id_jenis_surat');
+        $this->db->join('tb_user b', 'b.devisi = tb_surat_masuk.disposisi');
+        $this->db->where('tb_surat_masuk.disposisi', $this->session->userdata('devisi'));
+        return $this->db->get();
+    }
 }
