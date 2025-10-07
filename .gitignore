@@ -32,4 +32,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 # Customed ignore
-db_surat.sql
+*.sql
